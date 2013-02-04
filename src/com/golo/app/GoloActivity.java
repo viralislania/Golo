@@ -1,5 +1,8 @@
 package com.golo.app;
 
+import android.app.Activity;
+import android.os.Bundle;
+
 
 public class GoloActivity extends Activity {
 	/** Called when the activity is first created. */

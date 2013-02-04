@@ -4,5 +4,11 @@
     <string name="app_name">SampleG</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
+    <string name="hint_search">Search</string>
+    <string name="or">OR</string>
+    <string name="exploreWithGolo">Explore With Golo</string>
+    <string name="whatsthis">Whats this ?</string>
+    <string name="frequentlyVisited">Frequently Visited</string>
+    <string name="recentlyVisited">Recently Visited</string>
 
 </resources>
