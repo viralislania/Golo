@@ -1,6 +1,7 @@
 package com.golo.app;
 
 import org.holoeverywhere.app.Activity;
+import org.holoeverywhere.app.Dialog;
 import org.holoeverywhere.widget.GridView;
 
 import android.content.Context;
@@ -10,9 +11,10 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.BaseAdapter;
 
 public class SearchResultActivity extends Activity
@@ -76,12 +78,13 @@ public class SearchResultActivity extends Activity
             }
          });
 
-         gridView.setOnLongClickListener(new OnLongClickListener()
+         gridView.setOnItemLongClickListener(new OnItemLongClickListener()
          {
 
             @Override
-            public boolean onLongClick(View v)
+            public boolean onItemLongClick(AdapterView< ? > arg0, View arg1, int arg2, long arg3)
             {
+               showInstantCheckinDialog();
                return false;
             }
          });
@@ -96,6 +99,13 @@ public class SearchResultActivity extends Activity
       {
          return POSITION_NONE;
       }
+   }
+
+   private void showInstantCheckinDialog()
+   {
+      Dialog dialog = new Dialog(this);
+      dialog.setContentView(R.layout.instant_checkin);
+      dialog.show();
    }
 
    private class SearchResultAdapter extends BaseAdapter

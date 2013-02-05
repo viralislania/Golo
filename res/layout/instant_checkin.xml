@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:padding="15dp" >
+
+    <Button
+        android:id="@+id/icheck_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="i-Check in" />
+
+    <Button
+        android:id="@+id/ccheck_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/icheck_in"
+        android:text="C-Check in" />
+
+    <TextView
+        android:id="@+id/merchantName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/icheck_in"
+        android:layout_marginTop="10dp"
+        android:text="sagr kinara dhaba" />
+
+    <TextView
+        android:id="@+id/merchantAddr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/merchantName"
+        android:layout_marginTop="10dp"
+        android:text="sagr kinara dhaba andheri west goregaon mumbai" />
+
+</RelativeLayout>
