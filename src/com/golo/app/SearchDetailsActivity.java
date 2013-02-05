@@ -1,9 +1,10 @@
 package com.golo.app;
 
-import android.app.Activity;
+import org.holoeverywhere.ArrayAdapter;
+import org.holoeverywhere.app.Activity;
+import org.holoeverywhere.widget.ListView;
+
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 public class SearchDetailsActivity extends Activity
 {

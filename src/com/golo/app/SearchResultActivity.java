@@ -1,6 +1,8 @@
 package com.golo.app;
 
-import android.app.Activity;
+import org.holoeverywhere.app.Activity;
+import org.holoeverywhere.widget.GridView;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,10 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
-import android.widget.GridView;
 
 public class SearchResultActivity extends Activity
 {
@@ -67,9 +67,8 @@ public class SearchResultActivity extends Activity
 
          gridView.setOnItemClickListener(new OnItemClickListener()
          {
-
             @Override
-            public void onItemClick(AdapterView< ? > arg0, View arg1, int arg2, long arg3)
+            public void onItemClick(android.widget.AdapterView< ? > arg0, View arg1, int arg2, long arg3)
             {
                Intent intent = new Intent();
                intent.setClass(SearchResultActivity.this, SearchDetailsActivity.class);

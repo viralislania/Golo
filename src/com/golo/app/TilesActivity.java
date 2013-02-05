@@ -1,4 +1,4 @@
-package com.example.sampleg;
+package com.golo.app;
 
 import java.util.ArrayList;
 
@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
-import android.widget.TextView;
 
 public class TilesActivity extends Activity
 {
@@ -19,21 +18,19 @@ public class TilesActivity extends Activity
    {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.tiles);
-      
-      
-      
+
+
+
       GridView gridView = (GridView) findViewById(R.id.gridTiles);
       TilesAdapter adapter = new TilesAdapter(null);
       gridView.setAdapter(adapter);
-      
+
    }
-   
+
    private class TilesAdapter extends BaseAdapter
    {
-      ArrayList<String> data ;
       public TilesAdapter(ArrayList<String> list)
       {
-         data = list;
       }
 
       @Override
@@ -59,15 +56,15 @@ public class TilesActivity extends Activity
       {
          LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
          convertView = inflater.inflate(R.layout.tiles_item, null);
-         
-         TextView loyaltyPoints = (TextView) convertView.findViewById(R.id.loyaltyPoints);
-         TextView pt = (TextView) convertView.findViewById(R.id.pt);
-         TextView vgNonveg = (TextView) convertView.findViewById(R.id.vgNvg);
-         TextView merchantName = (TextView) convertView.findViewById(R.id.merchantName);
-         
+
+         convertView.findViewById(R.id.loyaltyPoints);
+         convertView.findViewById(R.id.pt);
+         convertView.findViewById(R.id.vgNvg);
+         convertView.findViewById(R.id.merchantName);
+
          return convertView;
-         
+
       }
-      
+
    }
 }
