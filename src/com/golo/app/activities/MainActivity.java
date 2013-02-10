@@ -1,6 +1,7 @@
-package com.golo.app;
+package com.golo.app.activities;
 
-import org.holoeverywhere.app.Activity;
+import java.util.ArrayList;
+
 import org.holoeverywhere.widget.GridView;
 
 import android.content.Context;
@@ -13,11 +14,15 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
-import com.actionbarsherlock.view.Menu;
+import com.golo.app.ApplicationEx;
+import com.golo.app.R;
+import com.golo.app.model.Merchant;
+import com.golo.app.service.MerchantService;
+import com.golo.app.service.MerchantService.GetMerchantListener;
 
 
 
-public class MainActivity extends Activity
+public class MainActivity extends BaseActivity implements GetMerchantListener
 {
 
    @Override
@@ -41,20 +46,20 @@ public class MainActivity extends Activity
          @Override
          public void onClick(View v)
          {
-            Intent intent = new Intent();
-            intent.setClass(MainActivity.this, SearchResultActivity.class);
-            startActivity(intent);
+            //service call
+            MerchantService service = new MerchantService(MainActivity.this);
+            ApplicationEx.operationsQueue.execute(service);
          }
       });
    }
 
-   @Override
-   public boolean onCreateOptionsMenu(Menu menu)
-   {
-      // Inflate the menu; this adds items to the action bar if it is present.
-      getSupportMenuInflater().inflate(R.menu.activity_main, menu);
-      return true;
-   }
+   //   @Override
+   //   public boolean onCreateOptionsMenu(Menu menu)
+   //   {
+   //      // Inflate the menu; this adds items to the action bar if it is present.
+   //      getSupportMenuInflater().inflate(R.menu.activity_main, menu);
+   //      return true;
+   //   }
 
    private class SearchResultAdapter extends BaseAdapter
    {
@@ -90,6 +95,23 @@ public class MainActivity extends Activity
          return convertView;
 
       }
+
+   }
+
+   @Override
+   public void OnSuccess(ArrayList<ArrayList<Merchant>> list)
+   {
+      ApplicationEx.merchantList = list;
+      Intent intent = new Intent();
+      intent.setClass(MainActivity.this, SearchResultActivity.class);
+      //      intent.putParcelableArrayListExtra("merchants", list);
+      startActivity(intent);
+   }
+
+   @Override
+   public void OnFailure(int errorCode)
+   {
+      // TODO Auto-generated method stub
 
    }
 

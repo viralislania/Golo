@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">SampleG</string>
+    <string name="app_name">Golo!</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="hint_search">Search</string>
@@ -10,5 +10,10 @@
     <string name="whatsthis">Whats this ?</string>
     <string name="frequentlyVisited">Frequently Visited</string>
     <string name="recentlyVisited">Recently Visited</string>
+    <string name="menu">Menu</string>
+    <string name="directions">Directions</string>
+    <string name="happyhours">More deals and happy hours</string>
+    <string name="photos">Photos</string>
+    <string name="reviews">Reviews</string>
 
 </resources>

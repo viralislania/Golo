@@ -1,8 +1,8 @@
-package com.golo.app;
+package com.golo.app.activities;
 
-import org.holoeverywhere.app.Activity;
+import java.util.List;
+
 import org.holoeverywhere.app.Dialog;
-import org.holoeverywhere.widget.GridView;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,13 +11,22 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.GridView;
+import android.widget.TextView;
 
-public class SearchResultActivity extends Activity
+import com.golo.app.ApplicationEx;
+import com.golo.app.R;
+import com.golo.app.model.Merchant;
+import com.golo.app.pageindicator.LinePageIndicator;
+
+public class SearchResultActivity extends BaseActivity
 {
    private ViewPager viewPager;
 
@@ -27,22 +36,28 @@ public class SearchResultActivity extends Activity
       super.onCreate(savedInstanceState);
       setContentView(R.layout.search_result);
 
-      // GridView gridView = (GridView) findViewById(R.id.gridTiles);
-      // SearchResultAdapter adapter = new SearchResultAdapter(null);
-      // gridView.setAdapter(adapter);
+      //      ArrayList<Merchant> merchantList = getIntent().getParcelableArrayListExtra("merchants");
 
       viewPager = (ViewPager) findViewById(R.id.pager);
       SearchResultPagerAdapter adapter = new SearchResultPagerAdapter();
       viewPager.setAdapter(adapter);
+
+      LinePageIndicator indicator = (LinePageIndicator) findViewById(R.id.indicator);
+      indicator.setViewPager(viewPager);
    }
 
    private class SearchResultPagerAdapter extends PagerAdapter
    {
+      public SearchResultPagerAdapter()
+      {
+         //         merchantList = list;
+      }
 
       @Override
       public int getCount()
       {
-         return 5;
+         //         int count = (int) Math.round((float)merchantList.size() / NUMBER_OF_GRIDS + 0.5);
+         return ApplicationEx.merchantList.size();
       }
 
       @Override
@@ -64,7 +79,10 @@ public class SearchResultActivity extends Activity
          LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
          View layout = inflater.inflate(R.layout.tiles, null);
          GridView gridView = (GridView) layout.findViewById(R.id.gridTiles);
-         SearchResultAdapter adapter = new SearchResultAdapter();
+
+         List<Merchant> list = ApplicationEx.merchantList.get(position);
+
+         SearchResultAdapter adapter = new SearchResultAdapter(list);
          gridView.setAdapter(adapter);
 
          gridView.setOnItemClickListener(new OnItemClickListener()
@@ -72,8 +90,12 @@ public class SearchResultActivity extends Activity
             @Override
             public void onItemClick(android.widget.AdapterView< ? > arg0, View arg1, int arg2, long arg3)
             {
+               Merchant merchant = (Merchant) arg1.getTag();
+
                Intent intent = new Intent();
                intent.setClass(SearchResultActivity.this, SearchDetailsActivity.class);
+               intent.putExtra("merchantId", merchant.getMerchantId());
+               intent.putExtra("loyaltyPoints", merchant.getLoyaltyPoints());
                startActivity(intent);
             }
          });
@@ -103,17 +125,37 @@ public class SearchResultActivity extends Activity
 
    private void showInstantCheckinDialog()
    {
-      Dialog dialog = new Dialog(this);
+      final Dialog dialog = new Dialog(this);
       dialog.setContentView(R.layout.instant_checkin);
+      Button icheckInBtn = (Button) dialog.findViewById(R.id.icheck_in);
+      icheckInBtn.setOnClickListener(new OnClickListener()
+      {
+
+         @Override
+         public void onClick(View v)
+         {
+            Intent intent = new Intent();
+            intent.setClass(SearchResultActivity.this, CheckInSuccessActivity.class);
+            startActivity(intent);
+            dialog.dismiss();
+         }
+      });
       dialog.show();
    }
 
    private class SearchResultAdapter extends BaseAdapter
    {
+      List<Merchant> list;
+
+      public SearchResultAdapter(List<Merchant> list)
+      {
+         this.list = list;
+      }
+
       @Override
       public int getCount()
       {
-         return 9;
+         return list.size();
       }
 
       @Override
@@ -132,12 +174,20 @@ public class SearchResultActivity extends Activity
       public View getView(int position, View convertView, ViewGroup parent)
       {
          LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-         convertView = inflater.inflate(R.layout.tiles_item, null);
+         if (convertView == null)
+            convertView = inflater.inflate(R.layout.tiles_item, null);
 
-         convertView.findViewById(R.id.loyaltyPoints);
-         convertView.findViewById(R.id.pt);
-         convertView.findViewById(R.id.vgNvg);
-         convertView.findViewById(R.id.merchantName);
+         TextView loyaltyPoints = (TextView) convertView.findViewById(R.id.loyaltyPoints);
+         TextView pt = (TextView) convertView.findViewById(R.id.pt);
+         TextView vegNonVeg = (TextView) convertView.findViewById(R.id.vgNvg);
+         TextView merchantName = (TextView) convertView.findViewById(R.id.merchantName);
+
+         loyaltyPoints.setText(list.get(position).getLoyaltyPoints() + "");
+         pt.setText("pt");
+         vegNonVeg.setText(list.get(position).isVeg() ? "V" : "NV");
+         merchantName.setText(list.get(position).getMerchantName() + "");
+
+         convertView.setTag(list.get(position));
 
          return convertView;
 

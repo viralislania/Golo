@@ -1,139 +1,205 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#ffffff"
-    android:padding="15dp" >
+    android:layout_height="match_parent" >
 
     <RelativeLayout
-        android:id="@+id/pointsTable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" >
+        android:background="#ffffff"
+        android:padding="15dp" >
+
+        <RelativeLayout
+            android:id="@+id/pointsTable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true" >
+
+            <TextView
+                android:id="@+id/loyaltyPoints"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12"
+                android:textSize="24sp"
+                android:textStyle="bold" 
+                android:textColor="#000000"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/loyaltyPoints"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@+id/loyaltyPoints"
+                android:gravity="bottom"
+                android:text="pt"
+                android:textSize="14sp" 
+                android:textColor="#000000"/>
+
+            <TextView
+                android:id="@+id/pricing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="$$"
+                android:textSize="18sp"
+                android:textStyle="bold" 
+                android:textColor="#000000"/>
+
+            <TextView
+                android:id="@+id/rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/pricing"
+                android:text="***"
+                android:textSize="18sp"
+                android:textStyle="bold" 
+                android:textColor="#000000"/>
+
+            <TextView
+                android:id="@+id/VegNVeg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/rating"
+                android:text="V"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#000000" />
+        </RelativeLayout>
 
         <TextView
-            android:id="@+id/loyaltyPoints"
-            android:layout_width="wrap_content"
+            android:id="@+id/merchantName"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="12"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:layout_below="@+id/pointsTable"
+            android:layout_marginTop="15dp"
+            android:text="Cafe coffee day"
+            android:textSize="25sp"
+            android:textStyle="bold" 
+            android:textColor="#000000"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/merchantAddr"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/loyaltyPoints"
-            android:layout_marginLeft="5dp"
-            android:layout_toRightOf="@+id/loyaltyPoints"
-            android:gravity="bottom"
-            android:text="pt"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/pricing"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:text="$$"
+            android:layout_below="@+id/merchantName"
+            android:layout_marginTop="5dp"
+            android:text="LBS marg powai andheri west"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="normal" 
+            android:textColor="#000000"/>
 
         <TextView
-            android:id="@+id/rating"
-            android:layout_width="wrap_content"
+            android:id="@+id/merchantDetails"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_toLeftOf="@+id/pricing"
-            android:text="***"
+            android:layout_below="@+id/merchantAddr"
+            android:layout_marginTop="10dp"
+            android:text="Indian resto and coffee shop."
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="normal"
+            android:textColor="#000000" />
 
         <TextView
-            android:id="@+id/VegNVeg"
+            android:id="@+id/merchantFeatureText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/merchantDetails"
+            android:layout_marginTop="10dp"
+            android:text="Free 500 ml coke on every snacks"
+            android:textSize="18sp"
+            android:textStyle="normal"
+            android:textColor="#000000" />
+
+        <LinearLayout
+            android:id="@+id/chkinBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/merchantFeatureText"
+            android:layout_marginTop="15dp" >
+
+            <Button
+                android:id="@+id/icheckin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="i-Check-in"
+                android:textColor="#000000" />
+
+            <Button
+                android:id="@+id/ccheckin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="c-Check-in" 
+                android:textColor="#000000"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/requestReservation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_toLeftOf="@+id/rating"
-            android:text="V"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:layout_below="@+id/chkinBtn"
+            android:layout_marginTop="5dp"
+            android:text="Request reservation"
+            android:textColor="#000000" />
+
+        <!-- <LinearLayout android:id="@+id/moreOptionsList" -->
+        <!-- android:layout_width="match_parent" -->
+        <!-- android:layout_height="match_parent" -->
+        <!-- android:layout_below="@+id/requestReservation" -->
+        <!-- android:layout_marginTop="5dp" -->
+        <!-- android:cacheColorHint="#00000000"></ListView> -->
+
+        <LinearLayout
+            android:id="@+id/moreOptions"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/requestReservation"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/menu"
+                android:textSize="16sp"
+                android:textColor="#000000" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/directions"
+                android:textSize="16sp"
+                android:textColor="#000000" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/happyhours"
+                android:textSize="16sp" 
+                android:textColor="#000000"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/photos"
+                android:textSize="16sp" 
+                android:textColor="#000000"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/reviews"
+                android:textSize="16sp"
+                android:textColor="#000000" />
+        </LinearLayout>
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/merchantName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/pointsTable"
-        android:layout_marginTop="15dp"
-        android:text="Cafe coffee day"
-        android:textSize="25sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/merchantAddr"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/merchantName"
-        android:layout_marginTop="5dp"
-        android:text="LBS marg powai andheri west"
-        android:textSize="18sp"
-        android:textStyle="normal" />
-
-    <TextView
-        android:id="@+id/merchantDetails"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/merchantAddr"
-        android:layout_marginTop="10dp"
-        android:text="Indian resto and coffee shop."
-        android:textSize="18sp"
-        android:textStyle="normal" />
-    <TextView
-        android:id="@+id/merchantFeatureText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/merchantDetails"
-        android:layout_marginTop="10dp"
-        android:text="Free 500 ml coke on every snacks"
-        android:textSize="18sp"
-        android:textStyle="normal" />
-
-    <LinearLayout
-        android:id="@+id/chkinBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/merchantFeatureText"
-        android:layout_marginTop="15dp" >
-
-        <Button
-            android:id="@+id/icheckin"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="i-Check-in" />
-
-        <Button
-            android:id="@+id/ccheckin"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="c-Check-in" />
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/requestReservation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Request reservation"
-        android:layout_below="@+id/chkinBtn"
-        android:layout_marginTop="5dp" />
-    
-    <ListView android:id="@+id/moreOptionsList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/requestReservation"
-        android:layout_marginTop="5dp"
-        android:cacheColorHint="#00000000"></ListView>
-
-</RelativeLayout>
+</ScrollView>

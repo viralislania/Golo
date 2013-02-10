@@ -33,7 +33,8 @@
         android:layout_below="@+id/genericSearch"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:hint="@string/or" >
+        android:hint="@string/or"
+        android:textColor="#000000" >
     </TextView>
 
     <LinearLayout
@@ -48,14 +49,16 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/exploreWithGolo" >
+            android:text="@string/exploreWithGolo"
+            android:textColor="#000000" >
         </Button>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:text="@string/whatsthis" />
+<!--         <TextView -->
+<!--             android:layout_width="wrap_content" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:layout_marginLeft="20dp" -->
+<!--             android:text="@string/whatsthis"  -->
+<!--             android:textColor="#000000"/> -->
     </LinearLayout>
 
 </RelativeLayout>
