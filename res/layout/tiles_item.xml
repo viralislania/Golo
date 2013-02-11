@@ -3,7 +3,7 @@
     xmlns:holo="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="80dp"
-    android:background="#0000ff"
+    android:background="@drawable/tile"
     android:padding="2dp"
     android:minHeight="80dp">
 
@@ -24,7 +24,8 @@
         android:layout_marginLeft="5dp"
         android:layout_toRightOf="@id/loyaltyPoints"
         android:paddingBottom="3dp"
-        android:text="pt" >
+        android:text="pt" 
+        android:textColor="@color/ptcolor">
     </TextView>
 
     <TextView
@@ -32,7 +33,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:text="V" />
+        android:text="V"
+        android:textColor="@color/vcolor" />
 
     <TextView
         android:id="@+id/merchantName"

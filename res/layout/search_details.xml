@@ -21,9 +21,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="12"
+                android:textColor="#000000"
                 android:textSize="24sp"
-                android:textStyle="bold" 
-                android:textColor="#000000"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -33,8 +33,8 @@
                 android:layout_toRightOf="@+id/loyaltyPoints"
                 android:gravity="bottom"
                 android:text="pt"
-                android:textSize="14sp" 
-                android:textColor="#000000"/>
+                android:textColor="@color/ptcolor"
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/pricing"
@@ -42,9 +42,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:text="$$"
+                android:textColor="#000000"
                 android:textSize="18sp"
-                android:textStyle="bold" 
-                android:textColor="#000000"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/rating"
@@ -53,9 +53,9 @@
                 android:layout_marginRight="10dp"
                 android:layout_toLeftOf="@+id/pricing"
                 android:text="***"
+                android:textColor="#000000"
                 android:textSize="18sp"
-                android:textStyle="bold" 
-                android:textColor="#000000"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/VegNVeg"
@@ -64,9 +64,9 @@
                 android:layout_marginRight="10dp"
                 android:layout_toLeftOf="@+id/rating"
                 android:text="V"
+                android:textColor="@color/vcolor"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="#000000" />
+                android:textStyle="bold" />
         </RelativeLayout>
 
         <TextView
@@ -76,9 +76,9 @@
             android:layout_below="@+id/pointsTable"
             android:layout_marginTop="15dp"
             android:text="Cafe coffee day"
+            android:textColor="#000000"
             android:textSize="25sp"
-            android:textStyle="bold" 
-            android:textColor="#000000"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/merchantAddr"
@@ -87,9 +87,9 @@
             android:layout_below="@+id/merchantName"
             android:layout_marginTop="5dp"
             android:text="LBS marg powai andheri west"
+            android:textColor="#000000"
             android:textSize="18sp"
-            android:textStyle="normal" 
-            android:textColor="#000000"/>
+            android:textStyle="normal" />
 
         <TextView
             android:id="@+id/merchantDetails"
@@ -98,9 +98,9 @@
             android:layout_below="@+id/merchantAddr"
             android:layout_marginTop="10dp"
             android:text="Indian resto and coffee shop."
+            android:textColor="#000000"
             android:textSize="18sp"
-            android:textStyle="normal"
-            android:textColor="#000000" />
+            android:textStyle="normal" />
 
         <TextView
             android:id="@+id/merchantFeatureText"
@@ -109,9 +109,9 @@
             android:layout_below="@+id/merchantDetails"
             android:layout_marginTop="10dp"
             android:text="Free 500 ml coke on every snacks"
+            android:textColor="#000000"
             android:textSize="18sp"
-            android:textStyle="normal"
-            android:textColor="#000000" />
+            android:textStyle="normal" />
 
         <LinearLayout
             android:id="@+id/chkinBtn"
@@ -133,8 +133,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="c-Check-in" 
-                android:textColor="#000000"/>
+                android:text="c-Check-in"
+                android:textColor="#000000" />
         </LinearLayout>
 
         <Button
@@ -165,40 +165,40 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="@string/menu"
-                android:textSize="16sp"
-                android:textColor="#000000" />
+                android:textColor="@color/bluelinks"
+                android:textSize="16sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="@string/directions"
-                android:textSize="16sp"
-                android:textColor="#000000" />
+                android:textColor="@color/bluelinks"
+                android:textSize="16sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="@string/happyhours"
-                android:textSize="16sp" 
-                android:textColor="#000000"/>
+                android:textColor="@color/bluelinks"
+                android:textSize="16sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="@string/photos"
-                android:textSize="16sp" 
-                android:textColor="#000000"/>
+                android:textColor="@color/bluelinks"
+                android:textSize="16sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="@string/reviews"
-                android:textSize="16sp"
-                android:textColor="#000000" />
+                android:textColor="@color/bluelinks"
+                android:textSize="16sp" />
         </LinearLayout>
     </RelativeLayout>
 
