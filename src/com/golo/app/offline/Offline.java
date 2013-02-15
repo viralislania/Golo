@@ -75,8 +75,13 @@ public class Offline
          e.printStackTrace();
       }
       return null;
-
    }
+   
+   public static void getHomeScreenDetails()
+   {
+      Home home = new Home();
+   }
+
 
    private static MerchantDetail parseMerchantDetails(String merchantDetailsJson)
    {

@@ -51,6 +51,9 @@ public class MainActivity extends BaseActivity implements GetMerchantListener
             ApplicationEx.operationsQueue.execute(service);
          }
       });
+      
+      GetHomeScreenDetailsService service = new GetHomeScreenDetailsService(this);
+      service.
    }
 
    //   @Override
