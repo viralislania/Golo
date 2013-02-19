@@ -13,16 +13,18 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.golo.app.ApplicationEx;
 import com.golo.app.R;
+import com.golo.app.model.Home;
 import com.golo.app.model.Merchant;
+import com.golo.app.service.HomeScreenDetailsService;
+import com.golo.app.service.HomeScreenDetailsService.GetHomeScreenDetailsListener;
 import com.golo.app.service.MerchantService;
 import com.golo.app.service.MerchantService.GetMerchantListener;
 
-
-
-public class MainActivity extends BaseActivity implements GetMerchantListener
+public class MainActivity extends BaseActivity implements GetMerchantListener, GetHomeScreenDetailsListener
 {
 
    @Override
@@ -30,14 +32,6 @@ public class MainActivity extends BaseActivity implements GetMerchantListener
    {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_main);
-
-      GridView recent = (GridView) findViewById(R.id.recentlyTiles);
-      SearchResultAdapter adapter = new  SearchResultAdapter();
-      recent.setAdapter(adapter);
-
-      GridView frequent = (GridView) findViewById(R.id.frequentlyTiles);
-      adapter = new  SearchResultAdapter();
-      frequent.setAdapter(adapter);
 
       ImageView searchBtn = (ImageView) findViewById(R.id.searchBtn);
       searchBtn.setOnClickListener(new OnClickListener()
@@ -51,9 +45,9 @@ public class MainActivity extends BaseActivity implements GetMerchantListener
             ApplicationEx.operationsQueue.execute(service);
          }
       });
-      
-      GetHomeScreenDetailsService service = new GetHomeScreenDetailsService(this);
-      service.
+
+      HomeScreenDetailsService service = new HomeScreenDetailsService(this);
+      ApplicationEx.operationsQueue.execute(service);
    }
 
    //   @Override
@@ -66,10 +60,16 @@ public class MainActivity extends BaseActivity implements GetMerchantListener
 
    private class SearchResultAdapter extends BaseAdapter
    {
+      ArrayList<Merchant> merchantList;
+      public SearchResultAdapter(ArrayList<Merchant> merchantList)
+      {
+         this.merchantList = merchantList;
+      }
+
       @Override
       public int getCount()
       {
-         return 3;
+         return merchantList.size();
       }
 
       @Override
@@ -90,10 +90,18 @@ public class MainActivity extends BaseActivity implements GetMerchantListener
          LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
          convertView = inflater.inflate(R.layout.tiles_item, null);
 
-         convertView.findViewById(R.id.loyaltyPoints);
-         convertView.findViewById(R.id.pt);
-         convertView.findViewById(R.id.vgNvg);
-         convertView.findViewById(R.id.merchantName);
+         TextView loyaltyPoints = (TextView) convertView.findViewById(R.id.loyaltyPoints);
+         TextView pt = (TextView) convertView.findViewById(R.id.pt);
+         TextView vegNonVeg = (TextView) convertView.findViewById(R.id.vgNvg);
+         TextView merchantName = (TextView) convertView.findViewById(R.id.merchantName);
+
+         loyaltyPoints.setText(merchantList.get(position).getLoyaltyPoints() + "");
+         pt.setText("pt");
+         vegNonVeg.setText(merchantList.get(position).isVeg() ? "V" : "NV");
+         merchantName.setText(merchantList.get(position).getMerchantName());
+
+         convertView.setTag(merchantList.get(position));
+
 
          return convertView;
 
@@ -102,7 +110,7 @@ public class MainActivity extends BaseActivity implements GetMerchantListener
    }
 
    @Override
-   public void OnSuccess(ArrayList<ArrayList<Merchant>> list)
+   public void OnSuccessSearchResult(ArrayList<ArrayList<Merchant>> list)
    {
       ApplicationEx.merchantList = list;
       Intent intent = new Intent();
@@ -112,9 +120,30 @@ public class MainActivity extends BaseActivity implements GetMerchantListener
    }
 
    @Override
-   public void OnFailure(int errorCode)
+   public void onFailureSearchResult(int errorCode)
    {
       // TODO Auto-generated method stub
+
+   }
+
+   @Override
+   public void onSuccessHomeScreenDetails(Home home)
+   {
+      findViewById(R.id.recentlyVisitedText).setVisibility(View.VISIBLE);
+      findViewById(R.id.frequentlyVisitedText).setVisibility(View.VISIBLE);
+
+      GridView recent = (GridView) findViewById(R.id.recentlyTiles);
+      SearchResultAdapter adapter = new SearchResultAdapter(home.getRecentlyVisitedMerchantList());
+      recent.setAdapter(adapter);
+
+      GridView frequent = (GridView) findViewById(R.id.frequentlyTiles);
+      adapter = new SearchResultAdapter(home.getFrequentlyVisitedMerchantList());
+      frequent.setAdapter(adapter);
+   }
+
+   @Override
+   public void onFailureHomeScreenDetails(int errorCode)
+   {
 
    }
 

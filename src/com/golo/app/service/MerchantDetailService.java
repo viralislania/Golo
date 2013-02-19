@@ -10,9 +10,9 @@ public class MerchantDetailService extends Service implements Runnable
 {
    public interface GetMerchantDetailListener
    {
-      public void OnSuccess(MerchantDetail merchantDetail);
+      public void onSuccessMerchantDetails(MerchantDetail merchantDetail);
 
-      public void OnFailure(int errorCode);
+      public void onFailureMerchantDetails(int errorCode);
    }
 
    private MerchantDetail merchantDetail;
@@ -42,10 +42,10 @@ public class MerchantDetailService extends Service implements Runnable
          switch (msg.what)
          {
             case Service.SUCCESS:
-               listener.OnSuccess(merchantDetail);
+               listener.onSuccessMerchantDetails(merchantDetail);
                break;
             case Service.FAILURE:
-               listener.OnFailure(Service.FAILURE);
+               listener.onFailureMerchantDetails(Service.FAILURE);
                break;
             default:
                break;

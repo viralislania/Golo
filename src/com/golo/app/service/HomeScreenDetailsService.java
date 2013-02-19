@@ -1,26 +1,24 @@
 package com.golo.app.service;
 
-import java.util.ArrayList;
-
 import android.os.Handler;
 import android.os.Message;
 
-import com.golo.app.model.Merchant;
+import com.golo.app.model.Home;
 import com.golo.app.offline.Offline;
 
-public class MerchantService extends Service implements Runnable
+public class HomeScreenDetailsService extends Service implements Runnable
 {
-   public interface GetMerchantListener
+   public interface GetHomeScreenDetailsListener
    {
-      public void OnSuccessSearchResult(ArrayList<ArrayList<Merchant>> list);
+      public void onSuccessHomeScreenDetails(Home home);
 
-      public void onFailureSearchResult(int errorCode);
+      public void onFailureHomeScreenDetails(int errorCode);
    }
 
-   private ArrayList<ArrayList<Merchant>> list;
-   private final GetMerchantListener listener;
+   private Home home;
+   private final GetHomeScreenDetailsListener listener;
 
-   public MerchantService(GetMerchantListener listener)
+   public HomeScreenDetailsService(GetHomeScreenDetailsListener listener)
    {
       this.listener = listener;
    }
@@ -28,7 +26,7 @@ public class MerchantService extends Service implements Runnable
    @Override
    public void run()
    {
-      list = Offline.getArrayListOfMerchants();
+      home = Offline.getHomeScreenDetails();
       Message msg = new Message();
       msg.what = Service.SUCCESS;
       handler.sendMessage(msg);
@@ -42,10 +40,10 @@ public class MerchantService extends Service implements Runnable
          switch (msg.what)
          {
             case Service.SUCCESS:
-               listener.OnSuccessSearchResult(list);
+               listener.onSuccessHomeScreenDetails(home);
                break;
             case Service.FAILURE:
-               listener.onFailureSearchResult(Service.FAILURE);
+               listener.onFailureHomeScreenDetails(Service.FAILURE);
                break;
             default:
                break;

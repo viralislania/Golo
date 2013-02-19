@@ -6,6 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.golo.app.model.Home;
 import com.golo.app.model.Merchant;
 import com.golo.app.model.MerchantDetail;
 
@@ -15,7 +16,7 @@ public class Offline
    static String merchantDetailJson12 = "{\"merchantId\":12,\"merchantName\":\"Sai Palace\",\"merchantAddress\":\"S.V road malad west\",\"description\":\"Indian cuisine family restaurant\",\"additionalInformation\":\"Free 500ml coke on every order over Rs 70/-\",\"cost\":\"$$\"}";
    static String merchantDetailJson13 = "{\"merchantId\":13,\"merchantName\":\"Cafe Coffee day\",\"merchantAddress\":\"JVLR powai Hiranandani\",\"description\":\"Simply put, Cafe Coffee Day is India's favourite coffee shop, for the young and the young at heart\",\"additionalInformation\":\"Free 500ml coke on every order over Rs 70/-\",\"cost\":\"$\"}";
    static String merchantDetailJson14 = "{\"merchantId\":14,\"merchantName\":\"BBQ\",\"merchantAddress\":\"Pali Hill,Ground Floor,Om Palace, 403,Dr. Ambedkar Road, Junction, Pali Hill,Khar (West)\",\"description\":\"The Nations's favorite Barbeque destination is an exclusive vegetarian and non-vegetarian restaurant\",\"additionalInformation\":\"Free 500ml coke on every order over Rs 70/-\",\"cost\":\"$$$\"}";
-
+   static String homeScreenDetailsJson = "{\"totalLoyaltyPoints\":500,\"recentlyVisitedMerchant\":[{\"loyaltyPoints\":12,\"veg\":true,\"deals\":true,\"merchantId\":11,\"merchantName\":\"Sai Palace\",\"merchantAddress\":\"mumbai\"},{\"loyaltyPoints\":22,\"veg\":false,\"deals\":false,\"merchantId\":12,\"merchantName\":\"Westend\",\"merchantAddress\":\"mumbai\"},{\"loyaltyPoints\":10,\"veg\":true,\"deals\":false,\"merchantId\":13,\"merchantName\":\"Delhi darbar\",\"merchantAddress\":\"mumbai\"}],\"frequentlyVisitedMerchant\":[{\"loyaltyPoints\":16,\"veg\":false,\"deals\":false,\"merchantId\":31,\"merchantName\":\"Ribbons n ballons\",\"merchantAddress\":\"mumbai\"},{\"loyaltyPoints\":12,\"veg\":false,\"deals\":true,\"merchantId\":32,\"merchantName\":\"Alredos\",\"merchantAddress\":\"mumbai\"},{\"loyaltyPoints\":10,\"veg\":true,\"deals\":true,\"merchantId\":33,\"merchantName\":\"Cafe Coffe day\",\"merchantAddress\":\"mumbai\"}]}";
 
    public static ArrayList<ArrayList<Merchant>> getArrayListOfMerchants()
    {
@@ -37,12 +38,35 @@ public class Offline
       }
    }
 
+   public static Home getHomeScreenDetails()
+   {
+      return parseHomeScreenDetails(homeScreenDetailsJson);
+
+   }
+
+   private static Home parseHomeScreenDetails(String homeScreenDetailsJson)
+   {
+      Home home = null;
+      JSONObject jsonObject;
+      try
+      {
+         home = new Home();
+         jsonObject = new JSONObject(homeScreenDetailsJson);
+         home.deserializeJSON(jsonObject);
+      }
+      catch (Exception e)
+      {
+         e.printStackTrace();
+      }
+      return home;
+   }
+
    private static ArrayList<ArrayList<Merchant>> parse(String merchantJson)
    {
       try
       {
          JSONObject jsonObject = new JSONObject(merchantJson);
-         ArrayList<Merchant> list= new ArrayList<Merchant>(1);
+         ArrayList<Merchant> list = new ArrayList<Merchant>(1);
          ArrayList<ArrayList<Merchant>> merchantsList = new ArrayList<ArrayList<Merchant>>(1);
          if (jsonObject.has("merchant"))
          {
@@ -60,7 +84,7 @@ public class Offline
                   e.printStackTrace();
                }
                list.add(merchant);
-               if(list.size() == 9)
+               if (list.size() == 9)
                {
                   merchantsList.add(list);
                   list = new ArrayList<Merchant>(1);
@@ -76,12 +100,6 @@ public class Offline
       }
       return null;
    }
-   
-   public static void getHomeScreenDetails()
-   {
-      Home home = new Home();
-   }
-
 
    private static MerchantDetail parseMerchantDetails(String merchantDetailsJson)
    {
@@ -89,7 +107,7 @@ public class Offline
 
       try
       {
-         JSONObject jsonObject = new  JSONObject(merchantDetailsJson);
+         JSONObject jsonObject = new JSONObject(merchantDetailsJson);
          detail.deserializeJSON(jsonObject);
          return detail;
       }

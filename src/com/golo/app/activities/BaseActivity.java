@@ -22,7 +22,7 @@ public class BaseActivity extends Activity
    public boolean onCreateOptionsMenu(Menu menu)
    {
 
-      menu.add("123")
+      menu.add(1, 1, 0, "123")
       .setShowAsAction(MenuItem.SHOW_AS_ACTION_WITH_TEXT | MenuItem.SHOW_AS_ACTION_ALWAYS );
 
       SubMenu subMenu = menu.addSubMenu("Options");

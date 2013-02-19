@@ -47,7 +47,7 @@ public class SearchDetailsActivity extends BaseActivity implements GetMerchantDe
    }
 
    @Override
-   public void OnSuccess(MerchantDetail merchantDetail)
+   public void onSuccessMerchantDetails(MerchantDetail merchantDetail)
    {
       updateUI(merchantDetail);
    }
@@ -75,7 +75,7 @@ public class SearchDetailsActivity extends BaseActivity implements GetMerchantDe
    }
 
    @Override
-   public void OnFailure(int errorCode)
+   public void onFailureMerchantDetails(int errorCode)
    {
       // TODO Auto-generated method stub
 

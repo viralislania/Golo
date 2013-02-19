@@ -4,49 +4,54 @@
     android:layout_height="match_parent"
     android:background="#ffffff"
     android:orientation="vertical"
-    tools:context=".MainActivity" 
-    android:padding="10dp">
+    android:padding="10dp"
+    tools:context=".MainActivity" >
 
     <include
         android:id="@+id/searchExplore"
-        layout="@layout/search_explorer" 
-        android:layout_marginTop="10dip"/>
+        android:layout_marginTop="10dip"
+        layout="@layout/search_explorer" />
 
-    <include layout="@layout/categories"
-        android:layout_marginTop="10dip" />
+    <include
+        android:layout_marginTop="10dip"
+        layout="@layout/categories" />
 
     <TextView
+        android:id="@+id/recentlyVisitedText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/recentlyVisited" 
         android:layout_marginTop="15dp"
-        android:textColor="#000000"/>
+        android:text="@string/recentlyVisited"
+        android:textColor="#000000"
+        android:visibility="gone" />
 
     <GridView
         android:id="@+id/recentlyTiles"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:horizontalSpacing="2dip"
         android:numColumns="3"
-        android:verticalSpacing="2dip" 
-        android:layout_marginTop="5dp">
+        android:verticalSpacing="2dip" >
     </GridView>
 
     <TextView
+        android:id="@+id/frequentlyVisitedText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:text="@string/frequentlyVisited"
-        android:layout_marginTop="15dp" 
-        android:textColor="#000000"/>
+        android:textColor="#000000"
+        android:visibility="gone" />
 
     <GridView
         android:id="@+id/frequentlyTiles"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:horizontalSpacing="2dip"
         android:numColumns="3"
-        android:verticalSpacing="2dip"
-        android:layout_marginTop="5dp" >
+        android:verticalSpacing="2dip" >
     </GridView>
 
 </LinearLayout>
