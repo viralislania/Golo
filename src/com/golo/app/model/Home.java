@@ -34,7 +34,6 @@ public class Home implements Model
       return frequentlyVisitedMerchantList;
    }
 
-
    @Override
    public JSONObject serializeJSON() throws Exception
    {

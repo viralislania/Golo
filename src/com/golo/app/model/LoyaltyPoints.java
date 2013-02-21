@@ -10,6 +10,10 @@ public class LoyaltyPoints implements Model
    private static final String USERID = "userId";
    private static final String TOTAL_LOYALTY_POINTS = "totalLoyaltyPoints";
    private static final String MERCHANT_LOYALTY_POINTS = "merchantLoyaltyPointsList";
+   
+   private String userId;
+   private int totalLoyaltyPoints;
+   private ArrayList<MerchantLoyaltyPoints> merchantLoyaltyPointsList;
 
    public class MerchantLoyaltyPoints implements Model
    {
@@ -69,10 +73,6 @@ public class LoyaltyPoints implements Model
       }
 
    }
-
-   private String userId;
-   private int totalLoyaltyPoints;
-   private ArrayList<MerchantLoyaltyPoints> merchantLoyaltyPointsList;
 
    public int getTotalLoyaltyPoints()
    {
