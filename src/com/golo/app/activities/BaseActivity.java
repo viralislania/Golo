@@ -4,9 +4,8 @@ import org.holoeverywhere.app.Activity;
 
 import android.os.Bundle;
 
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
-import com.actionbarsherlock.view.SubMenu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.golo.app.R;
 
 public class BaseActivity extends Activity
 {
@@ -19,22 +18,10 @@ public class BaseActivity extends Activity
    }
 
    @Override
-   public boolean onCreateOptionsMenu(Menu menu)
+   public boolean onCreateOptionsMenu(com.actionbarsherlock.view.Menu menu)
    {
-
-      menu.add(1, 1, 0, "123")
-      .setShowAsAction(MenuItem.SHOW_AS_ACTION_WITH_TEXT | MenuItem.SHOW_AS_ACTION_ALWAYS );
-
-      SubMenu subMenu = menu.addSubMenu("Options");
-      subMenu.add("Redeem my points");
-      subMenu.add("Points history");
-      subMenu.add("Circles");
-      subMenu.add("Favourites");
-      subMenu.add("Account details");
-
-      MenuItem subMenuItem = subMenu.getItem();
-      subMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS );
-
+      MenuInflater inflater = getSupportMenuInflater();
+      inflater.inflate(R.menu.activity_main, menu);
       return true;
    }
 }

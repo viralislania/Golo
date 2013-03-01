@@ -2,8 +2,32 @@
 
     <item
         android:id="@+id/menu_settings"
+        android:icon="@drawable/abs__ic_menu_moreoverflow_normal_holo_light"
         android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="@string/menu_settings"/>
+        android:showAsAction="ifRoom"
+        android:title="Menu">
+        <menu>
+            <item
+                android:id="@+id/sub_item_1"
+                android:icon="@drawable/abs__ic_cab_done_holo_light"
+                android:title="Redeem my points"/>
+            <item
+                android:id="@+id/sub_item_2"
+                android:icon="@drawable/abs__ic_clear_holo_light"
+                android:title="Points history"/>
+            <item
+                android:id="@+id/sub_item_2"
+                android:icon="@drawable/abs__ic_clear_holo_light"
+                android:title="Circles"/>
+            <item
+                android:id="@+id/sub_item_2"
+                android:icon="@drawable/abs__ic_clear_holo_light"
+                android:title="Favourites"/>
+            <item
+                android:id="@+id/sub_item_2"
+                android:icon="@drawable/abs__ic_clear_holo_light"
+                android:title="Account details"/>
+        </menu>
+    </item>
 
 </menu>
