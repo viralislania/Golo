@@ -1,8 +1,9 @@
 package com.golo.app.activities;
 
+import org.holoeverywhere.app.Activity;
+
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -13,7 +14,7 @@ import com.facebook.SessionState;
 import com.facebook.Settings;
 import com.golo.app.R;
 
-public class LoginActivity extends FragmentActivity
+public class LoginActivity extends Activity
 {
 
    private static final String URL_PREFIX_FRIENDS = "https://graph.facebook.com/me/friends?access_token=";

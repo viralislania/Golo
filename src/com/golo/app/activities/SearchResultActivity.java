@@ -13,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.BaseAdapter;
@@ -86,30 +85,29 @@ public class SearchResultActivity extends BaseActivity
          gridView.setAdapter(adapter);
 
          gridView.setOnItemClickListener(new OnItemClickListener()
-         {
-            @Override
-            public void onItemClick(android.widget.AdapterView< ? > arg0, View arg1, int arg2, long arg3)
             {
-               Merchant merchant = (Merchant) arg1.getTag();
+               @Override
+               public void onItemClick(android.widget.AdapterView< ? > arg0, View arg1, int arg2, long arg3)
+               {
+                  Merchant merchant = (Merchant) arg1.getTag();
 
-               Intent intent = new Intent();
-               intent.setClass(SearchResultActivity.this, SearchDetailsActivity.class);
-               intent.putExtra("merchantId", merchant.getMerchantId());
-               intent.putExtra("loyaltyPoints", merchant.getLoyaltyPoints());
-               startActivity(intent);
-            }
-         });
+                  Intent intent = new Intent();
+                  intent.setClass(SearchResultActivity.this, SearchDetailsActivity.class);
+                  intent.putExtra("merchantId", merchant.getMerchantId());
+                  intent.putExtra("loyaltyPoints", merchant.getLoyaltyPoints());
+                  startActivity(intent);
+               }
+            });
 
          gridView.setOnItemLongClickListener(new OnItemLongClickListener()
-         {
-
-            @Override
-            public boolean onItemLongClick(AdapterView< ? > arg0, View arg1, int arg2, long arg3)
             {
-               showInstantCheckinDialog();
-               return false;
-            }
-         });
+               @Override
+               public boolean onItemLongClick(android.widget.AdapterView< ? > arg0, View arg1, int arg2, long arg3)
+               {
+                  showInstantCheckinDialog();
+                  return false;
+               }
+            });
 
          container.addView(layout);
 
@@ -129,17 +127,17 @@ public class SearchResultActivity extends BaseActivity
       dialog.setContentView(R.layout.instant_checkin);
       Button icheckInBtn = (Button) dialog.findViewById(R.id.icheck_in);
       icheckInBtn.setOnClickListener(new OnClickListener()
-      {
-
-         @Override
-         public void onClick(View v)
          {
-            Intent intent = new Intent();
-            intent.setClass(SearchResultActivity.this, CheckInSuccessActivity.class);
-            startActivity(intent);
-            dialog.dismiss();
-         }
-      });
+
+            @Override
+            public void onClick(View v)
+            {
+               Intent intent = new Intent();
+               intent.setClass(SearchResultActivity.this, CheckInSuccessActivity.class);
+               startActivity(intent);
+               dialog.dismiss();
+            }
+         });
       dialog.show();
    }
 

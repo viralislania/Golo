@@ -52,13 +52,5 @@
             android:text="@string/exploreWithGolo"
             android:textColor="#000000" >
         </Button>
-
-<!--         <TextView -->
-<!--             android:layout_width="wrap_content" -->
-<!--             android:layout_height="wrap_content" -->
-<!--             android:layout_marginLeft="20dp" -->
-<!--             android:text="@string/whatsthis"  -->
-<!--             android:textColor="#000000"/> -->
     </LinearLayout>
-
-</RelativeLayout>
+</RelativeLayout>

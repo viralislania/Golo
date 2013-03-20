@@ -1,33 +1,39 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
+        android:id="@+id/loyaltyPoints"
+        android:orderInCategory="100"
+        android:showAsAction="withText|always"
+        android:title="1234">
+    </item>
+    <item
         android:id="@+id/menu_settings"
-        android:icon="@drawable/abs__ic_menu_moreoverflow_normal_holo_light"
+        android:icon="@drawable/abs__ic_menu_moreoverflow_holo_dark"
         android:orderInCategory="100"
         android:showAsAction="ifRoom"
         android:title="Menu">
         <menu>
             <item
-                android:id="@+id/sub_item_1"
-                android:icon="@drawable/abs__ic_cab_done_holo_light"
+                android:id="@+id/redeemPoints"
                 android:title="Redeem my points"/>
             <item
-                android:id="@+id/sub_item_2"
-                android:icon="@drawable/abs__ic_clear_holo_light"
+                android:id="@+id/pointsHistory"
                 android:title="Points history"/>
             <item
-                android:id="@+id/sub_item_2"
-                android:icon="@drawable/abs__ic_clear_holo_light"
+                android:id="@+id/circles"
                 android:title="Circles"/>
             <item
-                android:id="@+id/sub_item_2"
-                android:icon="@drawable/abs__ic_clear_holo_light"
+                android:id="@+id/favourites"
                 android:title="Favourites"/>
             <item
-                android:id="@+id/sub_item_2"
-                android:icon="@drawable/abs__ic_clear_holo_light"
+                android:id="@+id/accountDetails"
                 android:title="Account details"/>
+            <item
+                android:id="@+id/logout"
+                android:title="Logout"/>
         </menu>
+    </item>
+    <item>
     </item>
 
 </menu>

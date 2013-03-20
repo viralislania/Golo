@@ -5,6 +5,8 @@ import org.holoeverywhere.app.Activity;
 import android.os.Bundle;
 
 import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
+import com.facebook.Session;
 import com.golo.app.R;
 
 public class BaseActivity extends Activity
@@ -13,8 +15,6 @@ public class BaseActivity extends Activity
    protected void onCreate(Bundle savedInstanceState)
    {
       super.onCreate(savedInstanceState);
-
-      //startActionMode(new AnActionModeOfEpicProportions());
    }
 
    @Override
@@ -23,5 +23,27 @@ public class BaseActivity extends Activity
       MenuInflater inflater = getSupportMenuInflater();
       inflater.inflate(R.menu.activity_main, menu);
       return true;
+   }
+   
+   @Override
+   public boolean onOptionsItemSelected(MenuItem item)
+   {
+      switch (item.getItemId())
+      {
+         case R.id.logout:
+            onClickLogout();
+            return true;
+         default:
+            return super.onOptionsItemSelected(item);
+      }
+   }
+   
+   private void onClickLogout()
+   {
+      Session session = Session.getActiveSession();
+      if (!session.isClosed())
+      {
+         session.closeAndClearTokenInformation();
+      }
    }
 }
