@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:src="@drawable/ic_launcher" />
+            android:src="@drawable/search" />
     </LinearLayout>
 
     <TextView
@@ -50,7 +50,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/exploreWithGolo"
-            android:textColor="#000000" >
+            android:textColor="#000000"
+            android:background="@drawable/green_button" >
         </Button>
 
 <!--         <TextView -->
