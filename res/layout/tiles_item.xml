@@ -3,9 +3,9 @@
     xmlns:holo="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="80dp"
-    android:background="#0000ff"
-    android:padding="2dp"
-    android:minHeight="80dp">
+    android:background="@drawable/tiles"
+    android:minHeight="80dp"
+    android:padding="2dp" >
 
     <TextView
         android:id="@+id/loyaltyPoints"
@@ -13,8 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:text="12"
-        android:textSize="24sp"
-         />
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/pt"
@@ -24,8 +23,8 @@
         android:layout_marginLeft="5dp"
         android:layout_toRightOf="@id/loyaltyPoints"
         android:paddingBottom="3dp"
-        android:text="pt" 
-        android:textColor="@color/ptcolor">
+        android:text="pt"
+        android:textColor="@color/ptcolor" >
     </TextView>
 
     <TextView
@@ -41,8 +40,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="10dp"
         android:layout_below="@id/loyaltyPoints"
+        android:layout_marginTop="10dp"
         android:text="Sampple test" />
 
 </RelativeLayout>
